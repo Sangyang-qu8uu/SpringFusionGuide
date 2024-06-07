@@ -1,0 +1,23 @@
+# Spring Boot应用程序的Spring Data Redis配置
+spring:
+  data:
+    redis:
+      # 指定要连接的Redis数据库编号。Redis默认有16个数据库（编号为0至15），此处设置为16。
+      database: 0
+      # Redis服务器的主机地址，这里是
+      host: 127.0.0.1
+      # Redis服务器监听的端口号，此处设置为
+      port: 6379
+      # 访问Redis服务器所需的密码。此处设置为`
+      password: password
+      # 配置Lettuce连接池参数（Lettuce是Spring Data Redis使用的默认客户端库之一）
+      lettuce:
+        pool:
+          # 连接池中允许的最大活动连接数。当达到此限制时，新请求将被阻塞直到有连接释放。此处设置为`8`
+          max-active: 8
+          # 当连接池耗尽时，客户端尝试获取连接的最长时间。负值表示无限等待。此处设置为`-1ms`，意味着无限制等待
+          max-wait: -1ms
+          # 连接池中的最大空闲连接数。超过此数量的空闲连接将被断开。此处设置为`8`
+          max-idle: 8
+          # 连接池中的最小空闲连接数。低于此数量时，连接池将尝试补充空闲连接。此处设置为`0`，意味着无需保持最小空闲连接数
+          min-idle: 0
