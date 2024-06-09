@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+import jakarta.annotation.Resource;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +27,9 @@ import java.util.TimeZone;
 @Configuration
 @EnableCaching
 public class RedisConfig {
+    @Resource
+    private RedisProperties redisProperties;
+
     @Bean(name = "redisTemplate")
     @SuppressWarnings(value = {"unchecked", "rawtypes"})
     public RedisTemplate<String, Object> getRedisTemplate(RedisConnectionFactory factory) {
@@ -37,7 +42,7 @@ public class RedisConfig {
 
         ObjectMapper objectMapper = createObjectMapper();
 
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(objectMapper,Object.class);
+        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(objectMapper, Object.class);
         // 设置key和value的序列化规则
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
@@ -69,4 +74,6 @@ public class RedisConfig {
 
         return objectMapper;
     }
+
+
 }

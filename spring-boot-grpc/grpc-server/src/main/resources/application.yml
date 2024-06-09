@@ -1,0 +1,24 @@
+grpc:
+  server:
+    port: 9093 #grpc服务端默认监听端口
+    max-inbound-message-size: 4MB #grpc默认最大传输数据量大小为4MB,可修改此配置
+spring:
+  profiles:
+    active: dev
+  application:
+    name: grpc-server
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848 # nacos注册中心
+      config:
+        namespace: 8075b407-5a14-412d-9aeb-6db9b3ff57d5
+      discovery:
+        namespace: 8075b407-5a14-412d-9aeb-6db9b3ff57d5
+        group: DEFAULT_GROUP
+        #ip: 127.0.0.1
+logging:
+  level:
+    com.tianji: debug
+server:
+  port: 9094
+

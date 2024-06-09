@@ -1,9 +1,9 @@
 package org.example.spring.data.redis;
 
-import org.example.spring.data.redis.user.service.BitmapService;
+import jakarta.annotation.Resource;
+import org.example.spring.data.redis.component.BitmapService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class BitMapTest {
 
-    @Autowired
+    @Resource
     private BitmapService bitmapService;
 
     private final String date = "2024-06-01";

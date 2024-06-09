@@ -1,7 +1,7 @@
 package org.example.spring.data.redis;
 
 import jakarta.annotation.Resource;
-import org.example.spring.data.redis.user.service.HyperLogLogService;
+import org.example.spring.data.redis.component.HyperLogLogService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

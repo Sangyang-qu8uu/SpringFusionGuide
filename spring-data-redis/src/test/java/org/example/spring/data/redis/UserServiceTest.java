@@ -1,5 +1,6 @@
 package org.example.spring.data.redis;
 
+import jakarta.annotation.Resource;
 import org.example.spring.data.redis.user.domian.User;
 import org.example.spring.data.redis.user.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class UserServiceTest {
 
-    @Autowired
+    @Resource
     private UserService userService;
 
 

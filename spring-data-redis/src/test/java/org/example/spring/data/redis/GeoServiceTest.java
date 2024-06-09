@@ -1,9 +1,9 @@
 package org.example.spring.data.redis;
 
-import org.example.spring.data.redis.user.service.GeoService;
+import jakarta.annotation.Resource;
+import org.example.spring.data.redis.component.GeoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.GeoResult;
@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
  **/
 @SpringBootTest
 public class GeoServiceTest {
-    @Autowired
+    @Resource
     private GeoService geoService;
 
     private final String key = "places";

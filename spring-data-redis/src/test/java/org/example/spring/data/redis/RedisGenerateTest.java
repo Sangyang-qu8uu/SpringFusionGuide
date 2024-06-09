@@ -1,9 +1,7 @@
 package org.example.spring.data.redis;
 
 import jakarta.annotation.Resource;
-import org.example.spring.data.redis.service.RedisService;
-import org.example.spring.data.redis.user.domian.User;
-import org.example.spring.data.redis.user.service.UserService;
+import org.example.spring.data.redis.utils.RedisUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,21 +16,21 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RedisGenerateTest {
 
     @Resource
-    private RedisService redisService;
+    private RedisUtils redisUtils;
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
     @Test
     public void testGenerateId() {
-        long id1 = redisService.generateId();
-        long id2 = redisService.generateId();
+        long id1 = redisUtils.generateId();
+        long id2 = redisUtils.generateId();
         assertTrue(id2 > id1, "ID should be incremented");
     }
 
     @Test
     public void testGenerateIdWithTimestamp() {
-        String id1 = redisService.generateIdWithTimestamp();
-        String id2 = redisService.generateIdWithTimestamp();
+        String id1 = redisUtils.generateIdWithTimestamp();
+        String id2 = redisUtils.generateIdWithTimestamp();
         assertNotEquals(id1, id2, "IDs with timestamp should be unique");
     }
 
@@ -41,7 +39,7 @@ public class RedisGenerateTest {
         // Reset the unique_id key to simulate a fresh start
         redisTemplate.delete("unique_id");
 
-        long id1 = redisService.generateId();
+        long id1 = redisUtils.generateId();
         assertEquals(1, id1, "The first ID should be 1 after reset");
     }
 }

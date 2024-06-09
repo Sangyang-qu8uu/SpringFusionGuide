@@ -5,6 +5,13 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/spring-data-redis/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-websocket/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-mq/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-mq/rabbitmq-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-mq/spring-kafka/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-grpc/grpc-client/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-grpc/grpc-protocol/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-grpc/grpc-server/pom.xml" />
       </list>
     </option>
   </component>
