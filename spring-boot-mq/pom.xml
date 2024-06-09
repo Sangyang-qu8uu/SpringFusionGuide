@@ -5,7 +5,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.example</groupId>
-    <artifactId>spring-mq</artifactId>
+    <artifactId>spring-boot-mq</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-mq</name>
     <description>mq相关整合</description>
