@@ -12,6 +12,12 @@
         <option value="$PROJECT_DIR$/spring-boot-grpc/grpc-client/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-grpc/grpc-protocol/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-grpc/grpc-server/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-mq/spring-amqp/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-mq/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-websocket/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-redis/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-grpc/pom.xml" />
       </list>
     </option>
   </component>
