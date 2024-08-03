@@ -52,6 +52,6 @@ public class ArrayListVSLinkedList {
         arrayListPerfTest();
         System.out.println(Strings.repeat("#", 100));
         linkedListPerfTest();
-
+   
     }
 }
