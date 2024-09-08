@@ -1,4 +1,4 @@
-package org.example.kafkademo;
+package org.example.kafkademo.config;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

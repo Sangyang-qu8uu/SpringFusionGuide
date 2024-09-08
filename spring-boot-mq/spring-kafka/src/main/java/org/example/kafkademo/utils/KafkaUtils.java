@@ -1,4 +1,4 @@
-package org.example.kafkademo;
+package org.example.kafkademo.utils;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -7,14 +7,12 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
-import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Collections;
 import java.util.Properties;
 import java.util.Random;
-import java.util.concurrent.Future;
 
 public class KafkaUtils {
     /**
@@ -22,7 +20,7 @@ public class KafkaUtils {
      *
      * @return
      */
-    public static KafkaStreamServer bulidServer() {
+    public static KafkaStreamServer buildServer() {
         return new KafkaStreamServer();
     }
 
@@ -31,7 +29,7 @@ public class KafkaUtils {
      *
      * @return
      */
-    public static KafkaStreamClient bulidClient() {
+    public static KafkaStreamClient buildClient() {
         return new KafkaStreamClient();
     }
 
@@ -67,13 +65,11 @@ public class KafkaUtils {
          *
          * @param topic
          * @param msg
-         * @return
          */
-        public Future<RecordMetadata> sendMsg(String topic, String msg) {
-            ProducerRecord<String, String> record = new ProducerRecord<String, String>(topic, msg);
-            Future<RecordMetadata> future = kafkaProducer.send(record);
+        public void sendMsg(String topic, String msg) {
+            ProducerRecord<String, String> record = new ProducerRecord<>(topic, msg);
             System.out.println("消息发送成功:" + msg);
-            return future;
+            kafkaProducer.send(record);
         }
 
         /**
@@ -112,7 +108,7 @@ public class KafkaUtils {
             properties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
             properties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
             properties.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
-            kafkaConsumer = new KafkaConsumer<String, String>(properties);
+            kafkaConsumer = new KafkaConsumer<>(properties);
             return this;
         }
 
@@ -149,7 +145,7 @@ public class KafkaUtils {
 
 
     @FunctionalInterface
-    interface HeaderInterface {
+    public interface HeaderInterface {
         void execute(ConsumerRecord<String, String> record);
     }
 
@@ -161,7 +157,7 @@ public class KafkaUtils {
      */
     public static void main(String[] args) throws InterruptedException {
         //生产者发送消息
-        KafkaStreamServer kafkaStreamServer = KafkaUtils.bulidServer().createKafkaStreamServer("127.0.0.1", 9092);
+        KafkaStreamServer kafkaStreamServer = KafkaUtils.buildServer().createKafkaStreamServer("127.0.0.1", 9092);
         int i = 0;
         while (i < 10) {
             String msg = "Hello," + new Random().nextInt(100);
@@ -173,11 +169,11 @@ public class KafkaUtils {
         System.out.println("发送结束");
 
         System.out.println("接收消息");
-        KafkaStreamClient kafkaStreamClient = KafkaUtils.bulidClient().createKafkaStreamClient("127.0.0.1", 9092, "consumer-45");
+        KafkaStreamClient kafkaStreamClient = KafkaUtils.buildClient().createKafkaStreamClient("127.0.0.1", 9092, "consumer-45");
         kafkaStreamClient.pollMsg("test", new HeaderInterface() {
             @Override
             public void execute(ConsumerRecord<String, String> record) {
-                System.out.println(String.format("topic:%s,offset:%d,消息:%s", record.topic(), record.offset(), record.value()));
+                System.out.printf("topic:%s,offset:%d,消息:%s%n", record.topic(), record.offset(), record.value());
             }
         });
     }

@@ -1,4 +1,4 @@
-package org.example.kafkademo;
+package org.example.kafkademo.controller;
 
 import com.alibaba.fastjson.JSON;
 import jakarta.annotation.Resource;
