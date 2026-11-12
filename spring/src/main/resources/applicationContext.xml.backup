@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 在这里配置你的 Bean -->
+    <!-- id 是唯一标识，class 是全限定类名（包名+类名） -->
+    <bean id="userDao" class="com.example.spring.impl.UserDaoImpl"/>
+
+    <!--工厂静态方法实例化-->
+<!--    <bean id="userDao" class="com.example.spring.StaticFactoryBean" factory-method="createUserDao"/>-->
+    <!--工厂的非静态方法返回Bean实例-->
+    <!-- 1. 先配置工厂类的 Bean -->
+<!--    <bean id="dynamicFactoryBean" class="com.example.spring.DynamicFactoryBean"/>-->
+    <!-- 2. 配置目标 Bean
+     factory-bean: 指向上面定义的工厂 Bean 的 id
+     factory-method: 指定工厂类中返回实例的非静态方法名
+-->
+<!--    <bean id="userDao" class="com.example.spring.DynamicFactoryBean" factory-method="createUserDao" factory-bean="dynamicFactoryBean"/>-->
+
+
+    <bean id="userService" class="com.example.spring.impl.UserServiceImpl">
+<!--        (1)创建有参构造-->
+<!--        <constructor-arg name="userDao" ref="userDao"/>-->
+
+<!--        (2)Set方法-->
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+
+</beans>

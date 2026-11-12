@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 把原来主文件里的 userDao 移到这里 -->
+    <bean id="userDao" class="com.example.spring.impl.UserDaoImpl"/>
+    <!-- 把原来主文件里的 userService 移到这里 -->
+    <!-- 注意：这里的 ref="userDao" 依然能生效，只要主文件把它们 import 到一起，它们就在同一个容器里 -->
+    <bean id="userService" class="com.example.spring.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+</beans>
