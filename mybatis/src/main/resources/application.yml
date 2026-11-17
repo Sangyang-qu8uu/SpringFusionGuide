@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    # 打开 MyBatis 日志，能看到 SQL 和 Cache Hit Ratio
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 全局开启二级缓存（默认就是 true，这里显式写出来）
+    cache-enabled: true
+
+logging:
+  level:
+    com.example.demo.mapper: debug
