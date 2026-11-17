@@ -9,10 +9,7 @@ package com.example.demo;
  * @since JDK 11
  */
 
-import com.example.demo.mapper.UserMapper;
 import com.example.demo.service.CacheDemoService;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

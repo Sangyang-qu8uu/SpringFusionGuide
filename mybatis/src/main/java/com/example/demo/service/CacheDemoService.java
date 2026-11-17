@@ -9,7 +9,6 @@ package com.example.demo.service;
  * @since JDK 11
  */
 
-import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
